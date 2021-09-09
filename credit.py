@@ -1,8 +1,9 @@
 class Credit:
-    def __init__(self, size, interest=0.02, duration=30):
+    def __init__(self, size, interest=0.02, duration=30, currency='€'):
         self.size = size
         self.interest = interest
         self.duration = duration
+        self.currency = currency
         self.annuity = self.calculate_annuity()
         self.repayment_annual = round(self.annuity)
         self.repayment_month = round(self.annuity / 12)
