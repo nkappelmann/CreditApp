@@ -1,6 +1,7 @@
 # Main script
 
 import streamlit as st
+import matplotlib.pyplot as plt
 from credit import Credit
 
 st.title('Credit calculation app')
@@ -22,6 +23,14 @@ col1.metric("Total payment", str(desired_credit.repayment_total) + currency, '+'
 col2.metric("Annual payment", str(desired_credit.repayment_annual) + currency)
 col3.metric("Monthly payment", str(desired_credit.repayment_month) + currency)
 
-
-
-
+# Pie chart
+fig1, ax1 = plt.subplots()
+ax1.pie(
+    [desired_credit.size, desired_credit.repayment_excess],
+    explode=(0, 0.1),
+    labels=['Credit', 'Bank payment'],
+    startangle=90, autopct='%1.1f%%',
+    colors=['#66C2A5', '#FC8D62']
+)
+ax1.axis('equal')
+st.pyplot(fig1)
