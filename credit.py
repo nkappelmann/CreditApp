@@ -1,5 +1,3 @@
-import streamlit as st
-
 class Credit:
     def __init__(self, size, interest=0.02, duration=30, currency='€'):
         self.size = size
@@ -12,7 +10,6 @@ class Credit:
         self.repayment_total = round(self.annuity * self.duration)
         self.repayment_excess = self.repayment_total - self.size
 
-    @st.cache
     def calculate_annuity(self):
         annuity_factor = ((1+self.interest)**self.duration * self.interest)/((1+self.interest)**self.duration-1)
         annuity = self.size*annuity_factor
