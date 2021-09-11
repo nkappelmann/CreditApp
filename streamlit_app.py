@@ -17,7 +17,7 @@ credit_duration = st.sidebar.slider('Repayment duration (years):', 1, 50, 30, st
 interest_rate = st.sidebar.slider('Interest rate (%):', 0., 20., 2., step=0.05) / 100
 
 
-@st.cache # Calculation
+# Calculation
 desired_credit = Credit(size=credit_size, duration=credit_duration, interest=interest_rate, currency=currency)
 
 # Metrics
