@@ -16,9 +16,16 @@ credit_size = st.sidebar.slider(f'Credit size ({currency}):', 10_000, 2_000_000,
 credit_duration = st.sidebar.slider('Repayment duration (years):', 1, 50, 30, step=1)
 interest_rate = st.sidebar.slider('Interest rate (%):', 0., 20., 2., step=0.05) / 100
 
-
-# Calculation
+# Calculate initial credit
 desired_credit = Credit(size=credit_size, duration=credit_duration, interest=interest_rate, currency=currency)
+
+changing_interest_rate = st.sidebar.checkbox('Is the interest rate changing?')
+
+if changing_interest_rate:
+    fixed_interest_duration = st.sidebar.slider('Fixed interest duration (years):', 1, 50, 10, step=1)
+    st.sidebar.text('Please enter the new interest rate below:')
+    interest_rate2 = st.sidebar.slider('Interest rate (%):', 0., 20., interest_rate * 100, step=0.05) / 100
+
 
 # Metrics
 col1, col2, col3 = st.columns(3)

@@ -14,3 +14,6 @@ class Credit:
         annuity_factor = ((1+self.interest)**self.duration * self.interest)/((1+self.interest)**self.duration-1)
         annuity = self.size*annuity_factor
         return annuity
+
+    def get_repayment_data(self):
+        pass
